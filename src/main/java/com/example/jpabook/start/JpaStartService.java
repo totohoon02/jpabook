@@ -3,12 +3,14 @@ package com.example.jpabook.start;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class JpaStartService {
     private final EntityManagerFactory emf;
