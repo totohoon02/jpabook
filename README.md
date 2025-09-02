@@ -282,3 +282,37 @@ private String username;
 - 방향
 - 다중성
 - 연관관계의 주인
+
+### 단방향 연관관계
+
+#### 다대일(`N:1`)
+
+- 회원과 팀
+- 회원은 하나의 팀에만 소속
+- 회원과 팀은 다대일 관계
+- 객체 연관관계
+  - 회원 객체는 팀 객체를 포함
+  - `member.getTeam()`, 단방향 참조
+- 테이블 연관관계
+  - 외래키로 연관관계
+  - `TEAM_ID(FK)`
+  - 양방향 조인 가능
+
+```java
+@Getter
+@Setter
+@Entity
+@Table(name = "MEMBER")
+public class Member {
+    @Id
+    @Column(name = "ID")
+    private String id;
+    @Column(name = "NAME")
+    private String username;
+    private Integer age;
+
+    @ManyToOne // 다수의 회원 -> 하나의 팀
+    @JoinColumn(name = "TEAM_ID")
+    private Team team;
+}
+```
